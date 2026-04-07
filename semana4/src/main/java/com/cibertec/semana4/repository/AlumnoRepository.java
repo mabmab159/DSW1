@@ -27,6 +27,6 @@ public interface AlumnoRepository extends JpaRepository<Alumno, Long> {
     @Procedure(name = "listarAlumnos")
     List<Alumno> findAllAlumnos();
 
-    @Query(value = "select * from Alumno a ORDER IS a.apellido DESC", nativeQuery = true) // SQL
+    @Query(value = "select * from Alumno a ORDER BY a.apellido DESC", nativeQuery = true) // SQL
     List<Alumno> findAllOrderByApellidoDesc2();
 }
