@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "AlumnoJPA", indexes = {
         @Index(name="idx_nombre", columnList = "name"), // nombre
@@ -26,4 +28,14 @@ public class Alumno {
     private String apellido;
     private String usuario;
     private String password;
+    @ManyToOne
+    private Carrera carrera; //Bidireccional
+    @OneToOne
+    private Persona persona;
+    @ManyToOne
+    private Carrera2 carrera2; //Unidireccional
+    @OneToOne
+    private Persona2 persona2;
+    @ManyToMany
+    private List<Curso> curso; //Bidireccional
 }
