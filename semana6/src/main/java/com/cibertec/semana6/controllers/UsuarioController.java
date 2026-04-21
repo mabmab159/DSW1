@@ -10,27 +10,31 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/usuarios")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UsuarioController {
 
    private final UsuarioService usuarioService;
    private final JWTAuthenticationConfig jwtAuthenticationConfig;
 
     @GetMapping
-    public ResponseEntity<List<Object>> getUsuarios(){
-        List<Object> usuarios = new ArrayList<>();
+    public ResponseEntity<List<Usuario>> getUsuarios(){
+        List<Usuario> usuarios = new ArrayList<>();
+        usuarios.add(new Usuario(1L, "Miguel","p", "p","p","p","p", LocalDateTime.now()));
         return new ResponseEntity<>(usuarios, HttpStatus.OK);
         //return ResponseEntity.ok(usuarios);
     }
 
     @GetMapping("/unprotected")
-    public ResponseEntity<List<Object>> getUsuariosUnprotected(){
-        List<Object> usuarios = new ArrayList<>();
+    public ResponseEntity<List<Usuario>> getUsuariosUnprotected(){
+        List<Usuario> usuarios = new ArrayList<>();
+        usuarios.add(new Usuario(1L, "Miguel","p", "p","p","p","p", LocalDateTime.now()));
         return new ResponseEntity<>(usuarios, HttpStatus.OK);
         //return ResponseEntity.ok(usuarios);
     }
