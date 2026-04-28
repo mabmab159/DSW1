@@ -1,0 +1,18 @@
+<h1>Este es el titulo h1</h1>
+<p>prueba1 works!</p>
+<div>
+  <p>{{ usuario.id }}</p>
+  <p>{{ usuario.usuario }}</p>
+  <p>{{ usuario.password }}</p>
+  <p>{{ usuario.nombres }}</p>
+  <p>{{ usuario.apellidos }}</p>
+</div>
+
+
+<h2>Aca empieza el arreglo</h2>
+
+@for(usuarioUnico of usuarios; track usuarioUnico.id){
+  <p>{{usuarioUnico.id}}</p>
+  <p>{{usuarioUnico.usuario}}</p>
+  <p>{{usuarioUnico.nombres}}</p>
+}

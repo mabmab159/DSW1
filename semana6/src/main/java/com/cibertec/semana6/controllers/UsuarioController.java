@@ -17,7 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/usuarios")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "*")
 public class UsuarioController {
 
    private final UsuarioService usuarioService;
@@ -27,6 +27,7 @@ public class UsuarioController {
     public ResponseEntity<List<Usuario>> getUsuarios(){
         List<Usuario> usuarios = new ArrayList<>();
         usuarios.add(new Usuario(1L, "Miguel","p", "p","p","p","p", LocalDateTime.now()));
+        usuarios.add(new Usuario(2L, "Miguel","p", "p","p","p","p", LocalDateTime.now()));
         return new ResponseEntity<>(usuarios, HttpStatus.OK);
         //return ResponseEntity.ok(usuarios);
     }
@@ -35,7 +36,15 @@ public class UsuarioController {
     public ResponseEntity<List<Usuario>> getUsuariosUnprotected(){
         List<Usuario> usuarios = new ArrayList<>();
         usuarios.add(new Usuario(1L, "Miguel","p", "p","p","p","p", LocalDateTime.now()));
+        usuarios.add(new Usuario(2L, "Miguel","p", "p","p","p","p", LocalDateTime.now()));
         return new ResponseEntity<>(usuarios, HttpStatus.OK);
+        //return ResponseEntity.ok(usuarios);
+    }
+
+    @GetMapping("/unprotected/2")
+    public ResponseEntity<Usuario> getUsuarioUnprotected(){
+        Usuario usuario = new Usuario(1L, "Miguel","p", "p","p","p","p", LocalDateTime.now());
+        return new ResponseEntity<>(usuario, HttpStatus.OK);
         //return ResponseEntity.ok(usuarios);
     }
 

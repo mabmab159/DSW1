@@ -31,7 +31,7 @@ public class JWTAuthenticationConfig {
         return "Bearer " + token;
     }
 
-    public Claims decodeToken(String token){
+    public Claims decodeToken(String token) {
         Claims claims = Jwts.parser()
                 .setSigningKey(getSigningKey(SUPER_SECRET_TEXT))
                 .parseClaimsJws(token)

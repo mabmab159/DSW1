@@ -16,13 +16,13 @@ public class Constants {
     public static final String SUPER_SECRET_TEXT = "X7k$9Lm!qR2vZp@8#dF4tYw0BnC3uHjK5sE&aM6QxLrPzT";
     public static final long EXPIRATION_TIME = 600_000; // 10 minutos - expresados en milisegundos
 
-    public static Key getSigningKeyB64(String secret){
-        byte[] bytes = Decoders.BASE64.decode(secret);
-        return Keys.hmacShaKeyFor(bytes);
+    public static Key getSigningKeyB64(String secret) {
+        byte[] keyBytes = Decoders.BASE64.decode(secret);
+        return Keys.hmacShaKeyFor(keyBytes);
     }
 
-    public static Key getSigningKey(String secret){
-        byte[] bytes = secret.getBytes(StandardCharsets.UTF_8);
-        return Keys.hmacShaKeyFor(bytes);
+    public static Key getSigningKey(String secret) {
+        byte[] keyBytes = secret.getBytes(StandardCharsets.UTF_8);
+        return Keys.hmacShaKeyFor(keyBytes);
     }
 }
